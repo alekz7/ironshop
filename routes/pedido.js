@@ -43,10 +43,10 @@ pedido.get('/pedido/:id', (req, res, next) => {
       console.log(error)
     });
 });
-pedido.post('/pedidos/add', (req, res, next) => {  
+pedido.post('/pedidos/add', (req, res, next) => {
   const newPedido = new Pedido({
     usuario: "alekz",
-    estatus: "pendiente",
+    estatus: "empacando",
     carrito: req.body });
   newPedido.save()
     .then((pedido) => {
@@ -57,6 +57,18 @@ pedido.post('/pedidos/add', (req, res, next) => {
       res.status(405);
       res.json({mensaje: error});
     });
+});
+pedido.post('/pedidos/edit', (req, res, next) => {
+  console.log(req.query.pedido_id);
+  const { position } = req.body;
+  Pedido.update({ _id: req.query.pedido_id}, { $set: { usuario:'xxx', estatus:'en camino', selectedPosition: position } }, { new: true })
+  .then((pedido) => {
+    res.status(200);
+    res.json({mensaje: "pedido actualizado"});    
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 });
 
 module.exports = pedido;

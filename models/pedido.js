@@ -4,7 +4,8 @@ const Schema   = mongoose.Schema;
 const pedidoSchema = new Schema({
   usuario: String,
   estatus: String,
-  carrito: Object
+  carrito: Object,
+  selectedPosition: Object
 }, {
   timestamps: {
     createdAt: "created_at",

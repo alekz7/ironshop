@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap';
 
-class Orden extends React.Component {    
+class Orden extends React.Component {
   render () {
     return (
       <div>

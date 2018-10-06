@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import './App.css';
+import React, { Component } from 'react';
 import Menu from './components/Menu'
 import Orden from './components/Orden'
 import Product from './components/Product'
@@ -69,11 +69,6 @@ class App extends Component {
           console.log(result);
           this.limpiarCarrito();
           this.consultarPedidos();
-          // pedido
-          // this.setState({
-          //   isLoaded: true,
-          //   items: result.items
-          // });
         },
         (error) => {
           console.log(error);
