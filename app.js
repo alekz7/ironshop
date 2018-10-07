@@ -2,7 +2,6 @@ require('dotenv').config();
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
-const favicon      = require('serve-favicon');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
@@ -37,12 +36,14 @@ app.use(require('node-sass-middleware')({
 }));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 const walmart = require('./routes/walmart');
 app.use('/apiwalmart', walmart);
 
 const pedido = require('./routes/pedido');
 app.use('/apipedido', pedido);
+
+const mapa = require('./routes/mapa');
+app.use('/apimapa', mapa);
 
 module.exports = app;

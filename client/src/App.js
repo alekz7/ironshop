@@ -101,6 +101,7 @@ class App extends Component {
         <Product data={this.state.items} agregarItem={this.agregarItem}/>
         <Orden data={this.state.myCart} colocarPedido={this.colocarPedido}/>
         <Pedido data={this.state.pedidos} handleClick={this.colocarPedido} />
+        <Rutas data={this.state.pedidos} />
       </div>
     );
   }
