@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../logo.svg';
-
+import { Link, NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
@@ -25,17 +25,17 @@ class Menu extends React.Component {
         <Navbar inverse>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/home"><img src={logo} className="App-logo" alt="logo" /></a>
+              <Link to='/'><img src={logo} className="App-logo" alt="logo" /></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="/productos">
-                Productos
+              <NavItem eventKey={2} componentClass='span'>
+                <Link to="/">Productos</Link>
               </NavItem>
-              <NavItem eventKey={2} href="/mipedido">
-                Mi Pedido
+              <NavItem eventKey={2} componentClass='span'>
+                <NavLink to='/orden'>Mi Pedido</NavLink>
               </NavItem>
             </Nav>
             <Navbar.Form pullLeft>
@@ -45,11 +45,11 @@ class Menu extends React.Component {
               <Button type="submit" onClick={this.handleClic}>Buscar</Button>
             </Navbar.Form>
             <Nav pullRight>
-              <NavItem eventKey={3} href="#">
-                <Glyphicon glyph="shopping-cart" /> Mi carrito
+              <NavItem eventKey={3} componentClass='span'>
+                <Link to='/pedido'><Glyphicon glyph="shopping-cart" /> Mi carrito</Link>
               </NavItem>
-              <NavItem eventKey={4} href="#">
-                Bienvenido Alex
+              <NavItem eventKey={4} componentClass='span'>
+                <Link to='/rutas'>Bienvenido Alex</Link>
               </NavItem>
             </Nav>
           </Navbar.Collapse>

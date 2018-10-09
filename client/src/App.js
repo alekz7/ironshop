@@ -1,9 +1,13 @@
 import './App.css';
 import React, { Component } from 'react';
+import { Router, Route } from 'react-router-dom';
+import history from './history';
 import Menu from './components/Menu'
 import Orden from './components/Orden'
 import Product from './components/Product'
 import Pedido from './components/Pedido'
+import Rutas from './components/Rutas'
+
 
 class App extends Component {
   constructor(props) {
@@ -97,11 +101,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Menu buscar={this.buscar}/>
-        <Product data={this.state.items} agregarItem={this.agregarItem}/>
-        <Orden data={this.state.myCart} colocarPedido={this.colocarPedido}/>
-        <Pedido data={this.state.pedidos} handleClick={this.colocarPedido} />
-        <Rutas data={this.state.pedidos} />
+        <Router history={history}>
+          <div>
+            <Menu buscar={this.buscar}/>
+            <Route exact path='/' render={(props)=><Product {...props} data={this.state.items} agregarItem={this.agregarItem}/>}/>
+            <Route exact path='/orden' render={(props)=><Orden {...props} data={this.state.myCart} colocarPedido={this.colocarPedido}/>}/>
+            <Route exact path='/pedido' render={(props)=><Pedido {...props} data={this.state.pedidos} handleClick={this.colocarPedido}/>}/>
+            <Route exact path='/rutas' render={(props)=><Rutas {...props} component={Rutas} data={this.state.pedidos}/>}/>
+          </div>
+        </Router>
       </div>
     );
   }

@@ -11,7 +11,7 @@ class Rutas extends React.Component {
   }
   render () {
     return(
-
+      <h1>Rutas componente</h1>
     )
   }
 }
