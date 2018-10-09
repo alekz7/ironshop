@@ -37,7 +37,7 @@ app.use(require('node-sass-middleware')({
 }));
 
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'faviconBack.ico')));
 
 const walmart = require('./routes/walmart');
 app.use('/apiwalmart', walmart);
