@@ -35,6 +35,7 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
+// PRODUCTION
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 const walmart = require('./routes/walmart');

@@ -7,13 +7,15 @@ class Product extends React.Component {
   render () {
     return (
       <div>
-        <Grid>
-          <Row>
-            {this.props.data.map(item=>{
-              return <Carta propiedades={item} agregarItem={this.props.agregarItem}/>
-            })}
-          </Row>
-        </Grid>
+        <div className="content">
+          <div className="container">
+            <div className="row">
+                {this.props.data.map(item=>{
+                  return <div className="col-xs-12 col-md-3"><Carta propiedades={item} agregarItem={this.props.agregarItem}/></div>
+                })}              
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
@@ -39,3 +41,18 @@ export default Product;
 //
 // <Carta propiedades={itemFake} agregarItem={this.props.agregarItem}/>
 // <Carta propiedades={itemFake2} agregarItem={this.props.agregarItem}/>
+
+
+
+// <div>
+//   <Grid>
+//     <Row>
+//       {this.props.data.map(item=>{
+//         return <Col md={3}>
+//           <Carta propiedades={item} agregarItem={this.props.agregarItem}/>
+//           <Col />
+//       })}
+//     </Row>
+//   </Grid>
+// </div>
+//

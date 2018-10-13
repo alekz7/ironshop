@@ -19,6 +19,11 @@ class Menu extends React.Component {
   handleChange = (e) => {
     this.setState({itemABuscar: e.target.value});
   }
+  handleKeyPress = (e) => {
+    if(e.key==="Enter"){
+      this.props.buscar(this.state.itemABuscar);
+    }
+  }
   render () {
     return (
       <div>
@@ -31,26 +36,27 @@ class Menu extends React.Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={2} componentClass='span'>
-                <Link to="/">Productos</Link>
+              <NavItem eventKey={1} componentClass='span'>
+                <NavLink to="/" activeStyle={{color:"yellow"}} exact>Productos</NavLink>
               </NavItem>
               <NavItem eventKey={2} componentClass='span'>
-                <NavLink to='/orden'>Mi Pedido</NavLink>
+                <NavLink to='/orden' activeStyle={{color:"yellow"}} exact><Glyphicon glyph="shopping-cart" /> Mi carrito</NavLink>
               </NavItem>
+
             </Nav>
             <Navbar.Form pullLeft>
               <FormGroup>
-                <FormControl type="text" placeholder="Search" onChange={this.handleChange}/>
+                <FormControl type="text" placeholder="Search" onChange={this.handleChange} onKeyPress={this.handleKeyPress}/>
               </FormGroup>{' '}
               <Button type="submit" onClick={this.handleClic}>Buscar</Button>
             </Navbar.Form>
             <Nav pullRight>
               <NavItem eventKey={3} componentClass='span'>
-                <Link to='/pedido'><Glyphicon glyph="shopping-cart" /> Mi carrito</Link>
+                <NavLink to='/pedido' activeStyle={{color:"yellow"}} exact>Mis Pedidos</NavLink>
               </NavItem>
               <NavItem eventKey={4} componentClass='span'>
-                <Link to='/rutas'>Bienvenido Alex</Link>
-              </NavItem>
+                <NavLink to='/rutas' activeStyle={{color:"yellow"}} exact>Bienvenido Alex</NavLink>
+              </NavItem>              
             </Nav>
           </Navbar.Collapse>
         </Navbar>
