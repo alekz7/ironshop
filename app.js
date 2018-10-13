@@ -36,6 +36,7 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
 
+// PRODUCTION
 app.use(express.static(path.join(__dirname, 'client/build')));
 // app.use(favicon(path.join(__dirname, 'public', 'images', 'faviconBack.ico')));
 

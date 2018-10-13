@@ -8,11 +8,11 @@ import Product from './components/Product'
 import Pedido from './components/Pedido'
 import Rutas from './components/Rutas'
 
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loggedIn: false,
       error: null,
       isLoaded: false,
       buscar: "",
@@ -24,6 +24,30 @@ class App extends Component {
       pedidos: []
     };
   }
+  componentWillMount() {
+    this.buscar("toys");
+    this.consultarPedidos();
+  }
+  render() {
+    return (
+      <div className="App">
+        <Router history={history}>
+          <div>
+            <Menu buscar={this.buscar} loggedIn={this.state.loggedIn} login={this.login}/>
+            <Route exact path='/' render={(props)=><Product {...props} data={this.state.items} agregarItem={this.agregarItem}/>}/>
+            <Route exact path='/orden' render={(props)=><Orden {...props} data={this.state.myCart} colocarPedido={this.colocarPedido} limpiarCarrito={this.limpiarCarrito}/>}/>
+            <Route exact path='/pedido' render={(props)=><Pedido {...props} data={this.state.pedidos} handleClick={this.colocarPedido}/>}/>
+            <Route exact path='/rutas' render={(props)=><Rutas {...props} component={Rutas} data={this.state.pedidos}/>}/>
+          </div>
+        </Router>
+      </div>
+    );
+  }
+
+  login = () => {
+    this.setState({loggedIn:true});
+  }
+
   buscar = (itemABuscar) => {
     fetch("/apiwalmart/walmart/" + itemABuscar)
       .then(res => res.json())
@@ -59,6 +83,7 @@ class App extends Component {
       }
     });
   }
+
   colocarPedido = (carrito) => {
     fetch('/apipedido/pedidos/add', {
       method: 'POST',
@@ -70,7 +95,6 @@ class App extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.limpiarCarrito();
           this.consultarPedidos();
         },
@@ -79,16 +103,11 @@ class App extends Component {
         }
       );
   }
-  componentWillMount() {
-    this.buscar("toys");
-    this.consultarPedidos();
-  }
   consultarPedidos = () =>{
     fetch('/apipedido/pedidos')
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           this.setState({
             pedidos: result.items
           });
@@ -97,21 +116,6 @@ class App extends Component {
           console.log(error);
         }
       );
-  }
-  render() {
-    return (
-      <div className="App">
-        <Router history={history}>
-          <div>
-            <Menu buscar={this.buscar}/>
-            <Route exact path='/' render={(props)=><Product {...props} data={this.state.items} agregarItem={this.agregarItem}/>}/>
-            <Route exact path='/orden' render={(props)=><Orden {...props} data={this.state.myCart} colocarPedido={this.colocarPedido}/>}/>
-            <Route exact path='/pedido' render={(props)=><Pedido {...props} data={this.state.pedidos} handleClick={this.colocarPedido}/>}/>
-            <Route exact path='/rutas' render={(props)=><Rutas {...props} component={Rutas} data={this.state.pedidos}/>}/>
-          </div>
-        </Router>
-      </div>
-    );
   }
 }
 

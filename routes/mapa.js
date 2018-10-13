@@ -9,17 +9,8 @@ const centroMedico = '19.4069399,-99.157328'
 const metroEtiopia = '19.395386,-99.1588178'
 const parqueDelta = '19.403147,-99.156346'
 
-mapa.get('/mapa/matrix/:itemABuscar', (req, res, next) => {
-  console.log("##############");
-  const itemABuscar = req.params.itemABuscar;
-  console.log("$$$$$$$$$$$$$$$");
-  console.log(req.body);
-  console.log("%%%%%%%%%%%%%%%");
-  console.log(itemABuscar);
-  console.log("&&&&&&&&&&&&&&&");
-  console.log(req.query);
-  console.log('maps matrix');
-  fetch(baseMatrixApi + 'units=metric&origins=' + ironhack + '&destinations=' + centroMedico + '|' + metroEtiopia + '|' + parqueDelta + '&mode=driving&departure_time=now&traffic_model=best_guess&key=' + keyMaps)
+mapa.post('/mapa/matrix/alex', (req, res, next) => {
+  fetch(baseMatrixApi + req.body.params + keyMaps)
     .then(res => res.json())
     .then(
       (result) => {
@@ -33,15 +24,8 @@ mapa.get('/mapa/matrix/:itemABuscar', (req, res, next) => {
 });
 
 mapa.get('/mapa/:itemABuscar', (req, res, next) => {
-  console.log("##############");
   const itemABuscar = req.params.itemABuscar;
-  console.log("$$$$$$$$$$$$$$$");
-  console.log(req.body);
-  console.log("%%%%%%%%%%%%%%%");
   console.log(itemABuscar);
-  console.log("&&&&&&&&&&&&&&&");
-  console.log(req.query);
-  console.log('traffic mode best guess');
   fetch(baseApi + 'origin=' + ironhack + '&destination=' + centroMedico + '&mode=driving&departure_time=now&traffic_model=best_guess&key=' + keyMaps)
     .then(res => res.json())
     .then(

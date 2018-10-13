@@ -33,7 +33,6 @@ pedido.get('/pedidos/:usuario', (req, res, next) => {
 });
 pedido.get('/pedido/:id', (req, res, next) => {
   let pedidoId = req.params.id;
-  console.log(pedidoId);
   Pedido.findOne({'_id': pedidoId})
     .then(pedido => {
       console.log(pedido);
@@ -59,12 +58,11 @@ pedido.post('/pedidos/add', (req, res, next) => {
     });
 });
 pedido.post('/pedidos/edit', (req, res, next) => {
-  console.log(req.query.pedido_id);
   const { position } = req.body;
-  Pedido.update({ _id: req.query.pedido_id}, { $set: { usuario:'xxx', estatus:'en camino', selectedPosition: position } }, { new: true })
+  Pedido.update({ _id: req.query.pedido_id}, { $set: { estatus:'en camino', selectedPosition: position } }, { new: true })
   .then((pedido) => {
     res.status(200);
-    res.json({mensaje: "pedido actualizado"});    
+    res.json({mensaje: "pedido en camino"});
   })
   .catch((error) => {
     console.log(error);

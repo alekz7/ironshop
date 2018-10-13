@@ -28,8 +28,12 @@ class Orden extends React.Component {
             </tr>
             <tr>
               <td />
-              <td align="right"><Button bsStyle="danger" bsSize="large">Cancelar</Button></td>
-              <td><Button bsStyle="success" bsSize="large" onClick={()=>{this.props.colocarPedido(this.props.data)}}>Ordenar >></Button></td>
+              <td align="right">
+                <Button bsStyle="danger" bsSize="large" onClick={this.props.limpiarCarrito}>Cancelar</Button>
+              </td>
+              <td>
+                <Button bsStyle="success" bsSize="large" onClick={()=>{this.props.colocarPedido(this.props.data)}}>Ordenar >></Button>
+              </td>
             </tr>
           </tbody>
         </Table>
