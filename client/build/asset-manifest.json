@@ -1,7 +1,12 @@
 {
   "main.css": "static/css/main.e06892ea.css",
   "main.css.map": "static/css/main.e06892ea.css.map",
-  "main.js": "static/js/main.1871aeb2.js",
-  "main.js.map": "static/js/main.1871aeb2.js.map",
-  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg"
+  "main.js": "static/js/main.e2c7f80e.js",
+  "main.js.map": "static/js/main.e2c7f80e.js.map",
+  "static/media/baseline-face-24px.svg": "static/media/baseline-face-24px.cdf57ebd.svg",
+  "static/media/baseline-shopping_cart-24px.svg": "static/media/baseline-shopping_cart-24px.ac22c9f8.svg",
+  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg",
+  "static/media/twotone-face-24px.svg": "static/media/twotone-face-24px.1424b05a.svg",
+  "static/media/twotone-local_grocery_store-24px.svg": "static/media/twotone-local_grocery_store-24px.a2556577.svg",
+  "static/media/twotone-local_shipping-24px.svg": "static/media/twotone-local_shipping-24px.e2c7778f.svg"
 }
