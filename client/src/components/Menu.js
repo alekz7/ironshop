@@ -55,8 +55,8 @@ class Menu extends React.Component {
                 <NavLink to='/pedido' activeStyle={{color:"yellow"}} exact>Mis Pedidos</NavLink>
               </NavItem>
               <NavItem eventKey={4} componentClass='span'>
-                <NavLink to='/rutas' activeStyle={{color:"yellow"}} exact>Bienvenido Alex</NavLink>
-              </NavItem>              
+                <NavLink to='/' activeStyle={{color:"yellow"}} exact>Bienvenido Alex</NavLink>
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
