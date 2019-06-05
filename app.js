@@ -5,7 +5,6 @@ const express      = require('express');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-// const favicon      = require('serve-favicon');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -30,11 +29,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-app.use(require('node-sass-middleware')({
-  src:  path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
-  sourceMap: true
-}));
+// app.use(require('node-sass-middleware')({
+//   src:  path.join(__dirname, 'public'),
+//   dest: path.join(__dirname, 'public'),
+//   sourceMap: true
+// }));
 
 // PRODUCTION
 app.use(express.static(path.join(__dirname, 'client/build')));
