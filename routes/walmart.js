@@ -21,11 +21,11 @@ walmart.get('/walmart/:itemABuscar', (req, res, next) => {
   fetch("http://api.walmartlabs.com/v1/search?apiKey=" + process.env.WALMART_API_KEY +"&query=" + itemABuscar)
     .then(res => res.json())
     .then(
-      (result) => {
+      (result) => {        
         res.status(200);
         res.json(result);
       },
-      (error) => {
+      (error) => {        
         console.log("Error al consultar la API walmart (2)");
       }
     )

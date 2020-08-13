@@ -25,7 +25,7 @@ class App extends Component {
     };
   }
   componentWillMount() {
-    this.buscar("toys");
+    this.buscar("carne");
     this.consultarPedidos();
   }
   render() {
